@@ -25,6 +25,6 @@ def profit_loss():
             45 : day45 - day44
             }
         for days in difference_dict:
-            if difference_dict[days] > 0:
+            if difference_dict[days] < 0:
                 return f"Day {days}'s net profit is lower than Day {days - 1}'s net profit by ${difference_dict[days]}."
 print(profit_loss())
