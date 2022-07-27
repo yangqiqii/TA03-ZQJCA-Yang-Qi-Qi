@@ -6,7 +6,7 @@ def profit_loss():
     Function returns the day where the net profit is lower than the previous day and the value of the difference.
     """
     read_profitloss = []
-    profit_loss = Path.cwd()/"csv_reports"/"profit-and-loss-hkd.csv"
+    profit_loss = Path.cwd()/"csv_reports"/"profit-and-loss-usd.csv"
     with profit_loss.open(mode = "r", encoding = "UTF-8") as file:
         reader = csv.reader(file)
         for read_profitloss_lists in reader:

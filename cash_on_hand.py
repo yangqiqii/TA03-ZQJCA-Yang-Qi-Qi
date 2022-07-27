@@ -6,7 +6,7 @@ def cash_on_hand():
     Function returns the day where the cash on hand is lower than the previous day and the value of the difference.
     """
     read_cashonhand = []
-    cash_on_hand = Path.cwd()/"csv_reports"/"cash-on-hand-hkd.csv"
+    cash_on_hand = Path.cwd()/"csv_reports"/"cash-on-hand-usd.csv"
     with cash_on_hand.open(mode = "r", encoding = "UTF-8") as file:
         reader = csv.reader(file)
         for read_cashonhand_lists in reader:
