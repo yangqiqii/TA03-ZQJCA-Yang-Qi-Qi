@@ -5,27 +5,23 @@ def cash_on_hand():
     Function does not require parameter
     Function returns the day where the cash on hand is lower than the previous day and the value of the difference.
     """
-    read_cashonhand = []
-    cash_on_hand = Path.cwd()/"csv_reports"/"cash-on-hand-usd.csv"
-    with cash_on_hand.open(mode = "r", encoding = "UTF-8") as file:
+    file_path = Path.cwd()/"csv_reports"/"cash-on-hand-usd.csv"
+    cashonhand_list = []
+    days_list = []
+    with file_path.open(mode = 'r', encoding = 'UTF-8', newline ='' ) as file:
         reader = csv.reader(file)
-        for read_cashonhand_lists in reader:
-            read_cashonhand.append(read_cashonhand_lists)
-        print(read_cashonhand)
-        day40 = float(read_cashonhand[1][1])
-        day41 = float(read_cashonhand[2][1])
-        day42 = float(read_cashonhand[3][1])
-        day43 = float(read_cashonhand[4][1])
-        day44 = float(read_cashonhand[5][1])
-        day45 = float(read_cashonhand[6][1])
-        difference_dict = {
-            41 : day41 - day40,
-            42 : day42 - day41,
-            43 : day43 - day42,
-            44 : day44 - day43,
-            45 : day45 - day44
-            }
-        for days in difference_dict:
-            if difference_dict[days] < 0:
-                return f"Day {days}'s cash on hand is lower than Day {days - 1}'s cash on hand by ${difference_dict[days]}."
+        next(reader)
+        for datas in reader:
+            cashonhand_list.append(float(datas[1]))
+            days_list.append(datas[0])
+        print(cashonhand_list)
+        print(days_list)
+    index = 1
+    while index <= len(cashonhand_list):
+        difference = (cashonhand_list[index]) - (cashonhand_list[index- 1]) 
+        if difference <= 0:
+            return f"[CASH DEFLICT] DAY: {days_list[index]}, AMOUNT: USD{-(difference)}"
+        if difference > 0:
+            return "[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
+        index = index + 1    
 print(cash_on_hand())
