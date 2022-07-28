@@ -1,31 +1,23 @@
 from pathlib import Path
 import csv
-def cash_on_hand():
-    """
-    Function does not require parameter
-    Function returns the day where the cash on hand is lower than the previous day and the value of the difference.
-    """
-    read_cashonhand = []
-    cash_on_hand = Path.cwd()/"csv_reports"/"cash-on-hand-usd.csv"
-    with cash_on_hand.open(mode = "r", encoding = "UTF-8") as file:
+# def coh():
+file_path = Path.cwd()/"csv_reports"/"cash-on-hand-hkd.csv"
+empty_list = []
+empty_list2 = []
+
+with file_path.open(mode = 'r', encoding = 'UTF-8', newline ='' ) as file:
         reader = csv.reader(file)
-        for read_cashonhand_lists in reader:
-            read_cashonhand.append(read_cashonhand_lists)
-        print(read_cashonhand)
-        day40 = float(read_cashonhand[1][1])
-        day41 = float(read_cashonhand[2][1])
-        day42 = float(read_cashonhand[3][1])
-        day43 = float(read_cashonhand[4][1])
-        day44 = float(read_cashonhand[5][1])
-        day45 = float(read_cashonhand[6][1])
-        difference_dict = {
-            41 : day41 - day40,
-            42 : day42 - day41,
-            43 : day43 - day42,
-            44 : day44 - day43,
-            45 : day45 - day44
-            }
-        for days in difference_dict:
-            if difference_dict[days] < 0:
-                return f"Day {days}'s cash on hand is lower than Day {days - 1}'s cash on hand by ${difference_dict[days]}."
-print(cash_on_hand())
+        next(reader)
+
+        for line in reader:
+                empty_list.append(line)
+
+x = 0
+for data in range (len(empty_list)):
+                if x+1 >= len(empty_list):
+                        exit
+                else:
+                        diff =  int(empty_list[x][1])- int(empty_list[x+1][1])
+                        if diff <= 0:
+                                print('CASH DEFICIT DAY:',empty_list[x][0],'AMOUNT:USD',empty_list[x][1])
+                        x = x + 1
