@@ -18,5 +18,5 @@ def overheads():
             value_list.append(valuedata)
         for category, values in dictionary.items():
             if values == max(value_list):
-                return f"The highest overhead catgory is {category} and its value is {max(value_list)}%."
+                return f"[HIGHEST OVERHEADS] {category}: {max(value_list)}%"
 print(overheads())

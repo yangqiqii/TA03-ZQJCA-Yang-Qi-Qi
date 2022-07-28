@@ -20,7 +20,7 @@ def cash_on_hand():
     while index <= len(cashonhand_list):
         difference = (cashonhand_list[index]) - (cashonhand_list[index- 1]) 
         if difference <= 0:
-            return f"[CASH DEFLICT] DAY: {days_list[index]}, AMOUNT: USD{-(difference)}"
+            return f"[CASH DEFICIT] DAY: {days_list[index]}, AMOUNT: USD{-(difference)}"
         if difference > 0:
             return "[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
         index = index + 1  

@@ -5,26 +5,27 @@ def profit_loss():
     Function does not require parameter
     Function returns the day where the net profit is lower than the previous day and the value of the difference.
     """
-    read_profitloss = []
-    profit_loss = Path.cwd()/"csv_reports"/"profit-and-loss-usd.csv"
-    with profit_loss.open(mode = "r", encoding = "UTF-8") as file:
+    """
+    Function does not require parameter
+    Function returns the day where the cash on hand is lower than the previous day and the value of the difference.
+    """
+    file_path = Path.cwd()/"csv_reports"/"profit-and-loss-usd.csv"
+    netprofit_list = []
+    days_list = []
+    with file_path.open(mode = 'r', encoding = 'UTF-8', newline ='' ) as file:
         reader = csv.reader(file)
-        for read_profitloss_lists in reader:
-            read_profitloss.append(read_profitloss_lists)
-        day40 = float(read_profitloss[1][4])
-        day41 = float(read_profitloss[2][4])
-        day42 = float(read_profitloss[3][4])
-        day43 = float(read_profitloss[4][4])
-        day44 = float(read_profitloss[5][4])
-        day45 = float(read_profitloss[6][4])
-        difference_dict = {
-            41 : day41 - day40,
-            42 : day42 - day41,
-            43 : day43 - day42,
-            44 : day44 - day43,
-            45 : day45 - day44
-            }
-        for days in difference_dict:
-            if difference_dict[days] < 0:
-                return f"Day {days}'s net profit is lower than Day {days - 1}'s net profit by ${difference_dict[days]}."
+        next(reader)
+        for datas in reader:
+            netprofit_list.append(float(datas[4]))
+            days_list.append(datas[0])
+        print(netprofit_list)
+        print(days_list)
+    index = 1
+    while index <= len(netprofit_list):
+        difference = (netprofit_list[index]) - (netprofit_list[index- 1]) 
+        if difference <= 0:
+            return f"[PROFIT DEFICIT] DAY: {days_list[index]}, AMOUNT: USD{-(difference)}"
+        if difference > 0:
+            return "[NET PROFIT SURPLUS] NET PROFIT ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
+        index = index + 1  
 print(profit_loss())
