@@ -23,5 +23,5 @@ def cash_on_hand():
             return f"[CASH DEFLICT] DAY: {days_list[index]}, AMOUNT: USD{-(difference)}"
         if difference > 0:
             return "[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
-        index = index + 1    
+        index = index + 1  
 print(cash_on_hand())
