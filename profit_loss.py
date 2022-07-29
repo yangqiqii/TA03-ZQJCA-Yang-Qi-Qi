@@ -26,7 +26,7 @@ def profit_loss():
         else: 
             continue
         print(deficit)
-    if difference > 0:
+    if difference_list[0] > 0:
         surplus = "[NET PROFIT SURPLUS] NET PROFIT ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
         print(surplus)
 print(profit_loss())
