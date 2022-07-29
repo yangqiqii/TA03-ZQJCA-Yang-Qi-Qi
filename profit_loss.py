@@ -1,5 +1,6 @@
 from pathlib import Path
 import csv
+import api
 def profit_loss():
     """
     Function does not require parameter
@@ -21,8 +22,8 @@ def profit_loss():
         difference_list.append(difference)
         difference_list.sort()
         index += 1
-        if difference < 0:
-            deficit = f"[PROFIT DEFICIT] DAY: {days_list[index - 1]}, AMOUNT: USD{-(difference)}"
+        if difference <= 0:
+            deficit = f"[PROFIT DEFICIT] DAY: {days_list[index - 1]}, AMOUNT: SGD{-(difference * api.api())}"
         else: 
             continue
         print(deficit)
