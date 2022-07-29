@@ -5,10 +5,6 @@ def profit_loss():
     Function does not require parameter
     Function returns the day where the net profit is lower than the previous day and the value of the difference.
     """
-    """
-    Function does not require parameter
-    Function returns the day where the cash on hand is lower than the previous day and the value of the difference.
-    """
     file_path = Path.cwd()/"csv_reports"/"profit-and-loss-usd.csv"
     netprofit_list = []
     days_list = []
