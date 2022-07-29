@@ -1,5 +1,6 @@
 from pathlib import Path
 import csv
+import api
 def cash_on_hand():
     """
     Function does not require parameter
@@ -21,8 +22,8 @@ def cash_on_hand():
         difference_list.append(difference)
         difference_list.sort()
         index += 1
-        if difference < 0:
-            deficit = f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: USD{abs(difference)}"
+        if difference <= 0:
+            deficit = f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: SGD{abs(difference * api.api())}"
         else:
             continue
         print(deficit)
