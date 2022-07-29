@@ -15,19 +15,18 @@ def cash_on_hand():
         for datas in reader:
             cashonhand_list.append(float(datas[1]))
             days_list.append(datas[0])
-    print(cashonhand_list)
     index = 1
     while index < len(cashonhand_list):
-        difference = (cashonhand_list[index]) - (cashonhand_list[index- 1]) 
+        difference = (cashonhand_list[index]) - (cashonhand_list[index - 1]) 
         difference_list.append(difference)
         difference_list.sort()
-        if difference < 0:
-            message = f"[CASH DEFICIT] DAY: {days_list[index]}, AMOUNT: USD{abs(difference)}"
-        else:
-            message = ""
-        print(message)
         index += 1
+        if difference < 0:
+            deficit = f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: USD{abs(difference)}"
+        else:
+            continue
+        print(deficit)
     if difference_list[0] > 0:
-        message = "[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
-    print(message)
+        surplus = "[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
+        print(surplus)
 print(cash_on_hand())
