@@ -12,6 +12,7 @@ forex = float(data["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
 def api():
     """
     Function does not require parameter 
+    Function returns real time currency conversion rate from USD to SGD
     """
     print(f"[REAL TIME CURRENCY CONVERSION RATE] USD1 = SGD{forex}")
 api()
