@@ -23,11 +23,11 @@ def profit_loss():
         difference_list.sort()
         index += 1
         if difference <= 0:
-            deficit = f"[PROFIT DEFICIT] DAY: {days_list[index - 1]}, AMOUNT: SGD{-(difference * api.api())}"
+            deficit = f"[PROFIT DEFICIT] DAY: {days_list[index - 1]}, AMOUNT: SGD{-(difference * api.forex)}"
         else: 
             continue
         print(deficit)
     if difference_list[0] > 0:
         surplus = "[NET PROFIT SURPLUS] NET PROFIT ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
         print(surplus)
-print(profit_loss())
+profit_loss()

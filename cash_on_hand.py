@@ -23,11 +23,11 @@ def cash_on_hand():
         difference_list.sort()
         index += 1
         if difference <= 0:
-            deficit = f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: SGD{abs(difference * api.api())}"
+            deficit = f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: SGD{abs(difference * api.forex)}"
         else:
             continue
         print(deficit)
     if difference_list[0] > 0:
         surplus = "[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
         print(surplus)
-print(cash_on_hand())
+cash_on_hand()
