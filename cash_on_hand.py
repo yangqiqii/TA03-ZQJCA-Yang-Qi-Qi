@@ -10,24 +10,24 @@ def cash_on_hand():
     cashonhand_list = []
     days_list = []
     difference_list = []
+    summary = []
     with file_path.open(mode = 'r', encoding = 'UTF-8', newline ='' ) as file:
         reader = csv.reader(file)
         next(reader)
         for datas in reader:
             cashonhand_list.append(float(datas[1]))
             days_list.append(datas[0])
-    index = 1
-    while index < len(cashonhand_list):
-        difference = (cashonhand_list[index]) - (cashonhand_list[index - 1]) 
-        difference_list.append(difference)
-        difference_list.sort()
-        index += 1
-        if difference <= 0:
-            deficit = f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: SGD{abs(difference * api.forex)}"
-        else:
-            continue
-        print(deficit)
-    if difference_list[0] > 0:
-        surplus = "[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
-        print(surplus)
-cash_on_hand()
+        index = 1
+        while index < len(cashonhand_list):
+            difference = (cashonhand_list[index]) - (cashonhand_list[index - 1]) 
+            difference_list.append(difference)
+            difference_list.sort()
+            index += 1
+            if difference <= 0:
+                summary.append(f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: SGD{abs(difference * api.forex)}")
+            else:
+                continue  
+        if difference_list[0] > 0:
+            summary.append("[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
+        return summary
+print(cash_on_hand())
