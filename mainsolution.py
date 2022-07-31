@@ -19,4 +19,4 @@ def mainSolution():
         while plindex < len(plsummary):
             file.writelines(f"\n{plsummary[plindex]}")
             plindex += 1
-print(mainSolution())
+mainSolution()
