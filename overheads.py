@@ -1,5 +1,6 @@
 from pathlib import Path
 import csv
+import api
 def overheads():
     """
     Function does not require parameter
@@ -18,5 +19,5 @@ def overheads():
             value_list.append(valuedata)
         for category, values in dictionary.items():
             if values == max(value_list):
-                return f"[HIGHEST OVERHEADS] {category.upper()}: {max(value_list)}%"
+                return f"[HIGHEST OVERHEADS] {category.upper()}: SGD{round(max(value_list)*api.forex, 2)}"
 print(overheads())

@@ -24,7 +24,7 @@ def cash_on_hand():
             difference_list.sort()
             index += 1
             if difference <= 0:
-                summary.append(f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: SGD{abs(difference * api.forex)}")
+                summary.append(f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: SGD{round(abs(difference*api.forex), 2)}")
             else:
                 continue  
         if difference_list[0] > 0:

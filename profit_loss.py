@@ -24,7 +24,7 @@ def profit_loss():
             difference_list.sort()
             index += 1
             if difference <= 0:
-                summary.append(f"[PROFIT DEFICIT] DAY: {days_list[index - 1]}, AMOUNT: SGD{-(difference * api.forex)}")
+                summary.append(f"[PROFIT DEFICIT] DAY: {days_list[index - 1]}, AMOUNT: SGD{round(abs(difference * api.forex), 2)}")
             else: 
                 continue
         if difference_list[0] > 0:
