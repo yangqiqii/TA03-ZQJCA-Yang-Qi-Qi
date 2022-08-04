@@ -10,9 +10,9 @@ def overheads():
     Function does not require parameter
     Function returns the highest overhead category and its value.
     """
-    # Creating an empty dictionary to store catedory(key) : values(value)
+    # Create an empty dictionary to store catedory(key) : values(value)
     dictionary = {}
-    # Creating an empty list to store the values of each category
+    # Create an empty list to store the values of each category
     value_list = []
     # File path for overheads-day-45.csv file
     # Assign the filepath to the variable "overheads"
@@ -41,6 +41,7 @@ def overheads():
             # Use max() to find the highest value in value_list
             # Create a condition when values is the same as the highest value in value_list
             if values == max(value_list):
+                # Return summary statement for overheads
                 return f"[HIGHEST OVERHEADS] {category.upper()}: SGD{round(max(value_list)*api.forex, 2)}"
-# To excecute the function
+# Execute the function
 print(overheads())
