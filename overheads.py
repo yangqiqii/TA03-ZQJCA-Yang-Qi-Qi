@@ -3,7 +3,7 @@ from pathlib import Path
 import csv
 import api
 
-# Define the function overheads ()
+# Define the function overheads()
 def overheads():
     # Documentation of the function overheads()
     """
@@ -35,8 +35,8 @@ def overheads():
             dictionary[categorydata] = valuedata
             # Append "valuedata" into value_list
             value_list.append(valuedata)
-            # Use.items() to return a tuple of key-value within a special type of list
-            # caterogy(value) : values(value)
+        # Use .items() to return a tuple of key-value within a special type of list
+        # caterogy(value) : values(value)
         for category, values in dictionary.items():
             # Use max() to find the highest value in value_list
             # Create a condition when values is the same as the highest value in value_list
