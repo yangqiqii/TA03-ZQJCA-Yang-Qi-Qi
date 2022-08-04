@@ -13,7 +13,11 @@ def profit_loss():
     # File path for profit-and-loss-usd.csv file
     # Assign the file path to the variable "file_path"
     file_path = Path.cwd()/"csv_reports"/"profit-and-loss-usd.csv"
+<<<<<<< HEAD
     # Create an empty list to store net profit value for each day
+=======
+    # Create an empty list to store the net profit value for each day
+>>>>>>> 0d475fd20a385b6d1a625fd0cb0c669e63fa66c5
     netprofit_list = []
     # Create an empty list to store the days
     days_list = []
@@ -34,6 +38,7 @@ def profit_loss():
             netprofit_list.append(float(datas[4]))
             # Append days into days_list
             days_list.append(datas[0])
+<<<<<<< HEAD
         # Create "index" to represent the index postion of the items in netprofit_list
         # Create "index" to represent the index postion of the items in days_list
         index = 1
@@ -54,6 +59,28 @@ def profit_loss():
                 # Use .sort() to sort the differences in ascending order
                 difference_list.sort()
                 # Increase the index postion by 1
+=======
+        # Create "index" to represent the index position of the items in netprofit_list
+        # Create "index" to represent the index position of the items in days_list
+        index = 1
+        # Use while loops to repeat appending summary statement into "summary" for index position lesser than the number of items in netprofit_list
+        while index < len(netprofit_list):
+            # Use try to start execption handling
+            try:
+                # Calculate the difference between net profit of the day and net profit of the day before it
+                difference = (netprofit_list[index]) - (netprofit_list[index- 1]) 
+            # Use except to handle TypeError
+            except TypeError:
+                # Return "There is a TypeError!"
+                return "There is a TypeError!"
+            # Execute the followings if there is no TypeError
+            else:
+                # Append the differences into difference_list
+                difference_list.append(difference)
+                # Use .sort() to sort the differences in ascending order
+                difference_list.sort()
+                # Increase the index position by 1
+>>>>>>> 0d475fd20a385b6d1a625fd0cb0c669e63fa66c5
                 index += 1
                 # Create a condition when the difference is less than or equals to 0
                 if difference <= 0:
@@ -62,7 +89,11 @@ def profit_loss():
                     # Multiply difference with currency exchange rate to convert USD to SGD
                     # Use round( ,2) to round the value to 2 decimal places
                     summary.append(f"[PROFIT DEFICIT] DAY: {days_list[index - 1]}, AMOUNT: SGD{round(abs(difference * api.forex), 2)}")
+<<<<<<< HEAD
                 # Create a condition when the difference is more than 0
+=======
+                # Create a conditon when the difference is more than 0
+>>>>>>> 0d475fd20a385b6d1a625fd0cb0c669e63fa66c5
                 else: 
                     # Skip iteration if the difference satisfy the above condition
                     continue
@@ -73,4 +104,8 @@ def profit_loss():
         # Return "summary"
         return summary
 # Execute the function
+<<<<<<< HEAD
 print(profit_loss())
+=======
+print(profit_loss())
+>>>>>>> 0d475fd20a385b6d1a625fd0cb0c669e63fa66c5

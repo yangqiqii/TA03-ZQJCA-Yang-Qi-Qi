@@ -10,6 +10,7 @@ def cash_on_hand():
     Function does not require parameter
     Function returns the day where the cash on hand is lower than the previous day and the value of the difference.
     """
+<<<<<<< HEAD
     # File path for cash-on-hand-usd.csv file
     # Assign the file path to the variable "file path"
     file_path = Path.cwd()/"csv_reports"/"cash-on-hand-usd.csv"
@@ -25,6 +26,23 @@ def cash_on_hand():
     with file_path.open(mode = 'r', encoding = 'UTF-8', newline ='' ) as file:
         # Use csv.reader() to read csv file
         # Assign csv.reader(file) to the variable "reader"
+=======
+    # File path for cash-on-hand-usd.csv.file
+    # Assign the file path to the variable "file_path"
+    file_path = Path.cwd()/"csv_reports"/"cash-on-hand-usd.csv"
+    # Create an empty list to store the cash on hand values for each day
+    cashonhand_list = []
+    # Create an empty list to store the days
+    days_list = []
+    # Create and empty list to store the differences between cash on hand
+    difference_list = []
+    # Create an empty list to store the summary statements for cash-on-hand
+    summary = []
+    # Open cash-on-hand-usd.csv file for reading 
+    with file_path.open(mode = 'r', encoding = 'UTF-8', newline ='' ) as file:
+        # Use csv.reader() to read csv file
+        # Assign csv.file(reader) to the variable "reader"
+>>>>>>> 0d475fd20a385b6d1a625fd0cb0c669e63fa66c5
         reader = csv.reader(file)
         # Use next() to skip the header
         next(reader)
@@ -34,8 +52,13 @@ def cash_on_hand():
             cashonhand_list.append(float(datas[1]))
             # Append days into days_list
             days_list.append(datas[0])
+<<<<<<< HEAD
         # Create "index" to represent the index positon of the items in cashonhand_list
         # Create "index" to represent the index postion of the items in days_list
+=======
+        # Create "index" to represent the index position of the items in the cashonhand_list
+        # Create "index" to represent the index position of the items in the days_list
+>>>>>>> 0d475fd20a385b6d1a625fd0cb0c669e63fa66c5
         index = 1
         # Use while loop to repeat appending summary statement into "summary" for index position lesser than the number of items in cashonhand_list
         while index < len(cashonhand_list):
@@ -45,23 +68,38 @@ def cash_on_hand():
                 difference = (cashonhand_list[index]) - (cashonhand_list[index - 1]) 
             # Use except to handle TypeError
             except TypeError:
+<<<<<<< HEAD
                 # Return "There is a TypeError!" 
+=======
+                # Return "There is a TypeError!"
+>>>>>>> 0d475fd20a385b6d1a625fd0cb0c669e63fa66c5
                 return "There is a TypeError!"
             # Execute the followings if there is no TypeError
             else:
                 # Append the differences into difference_list
                 difference_list.append(difference)
+<<<<<<< HEAD
                 # Use .sort() to sort the differences in ascending order
+=======
+                #Use .sort() to sort the differences in ascending order
+>>>>>>> 0d475fd20a385b6d1a625fd0cb0c669e63fa66c5
                 difference_list.sort()
                 # Increase the index position by 1
                 index += 1
                 # Create a condition when the difference is less than or equals to 0
                 if difference <= 0:
                     # Append summary statement into "summary" if the difference satisfy the above condition
+<<<<<<< HEAD
                     # Use abs() to return the absolute value of difference
                     # Multiply difference with currency exchange rate to convert USD to SGD
                     # Use round( ,2) to round the value to 2 decimal places
                     summary.append(f"[CASH DEFICIT] DAY: {days_list[index - 1]}, AMOUNT: SGD{round(abs(difference*api.forex), 2)}")
+=======
+                    # Use abs() to returnthe absolute value of difference 
+                    # Multiply difference with currency exchange rate to convert USD to SGD
+                    # Use round( ,2) to round the values to 2 decimal places
+                    summary.append(f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: SGD{round(abs(difference*api.forex), 2)}")
+>>>>>>> 0d475fd20a385b6d1a625fd0cb0c669e63fa66c5
                 # Create a condition when the difference is more than 0
                 else:
                     # Skip iteration if the difference satisfy the above condition
@@ -73,4 +111,8 @@ def cash_on_hand():
         # Return "summary"
         return summary
 # Execute the function
+<<<<<<< HEAD
 print(cash_on_hand())
+=======
+print(cash_on_hand())
+>>>>>>> 0d475fd20a385b6d1a625fd0cb0c669e63fa66c5
