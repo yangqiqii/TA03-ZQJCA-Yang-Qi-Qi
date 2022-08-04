@@ -31,7 +31,6 @@ def profit_loss():
         # Access the sub-list in reader
         for datas in reader:
             # Append net profit values into netprofit_list
-            # netprofit_list.append(float(datas[4]))
             netprofit_list.append(float(datas[4]))
             # Append days into days_list
             days_list.append(datas[0])
