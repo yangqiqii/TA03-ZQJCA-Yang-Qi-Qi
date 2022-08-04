@@ -63,7 +63,7 @@ def cash_on_hand():
                     summary.append(f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: SGD{round(abs(difference*api.forex), 2)}")
                 # Create a condition when the difference is more than 0
                 else:
-                    #Skip iteration if the difference satisfy the above condition
+                    # Skip iteration if the difference satisfy the above condition
                     continue  
         # Create a condition when the 1st item of difference_list is more than 0
         if difference_list[0] > 0:
@@ -71,5 +71,5 @@ def cash_on_hand():
             summary.append("[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
         # Return "summary"
         return summary
-    # Execute the function
+# Execute the function
 print(cash_on_hand())
