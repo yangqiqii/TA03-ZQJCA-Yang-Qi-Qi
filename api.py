@@ -4,8 +4,8 @@ import json
 
 # Assign api key to the variable "api_key"
 api_key = "RGC6YA5ZJFKM6OPR"
-#Use f-string to insert api key into the url
-#Assign the url to "url"
+# Use f-string to insert api key into the url
+# Assign the url to "url"
 url = f"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey=demo{api_key}"
 # Use requests.get() to read "url" and assign it to "response"
 response = requests.get(url)
