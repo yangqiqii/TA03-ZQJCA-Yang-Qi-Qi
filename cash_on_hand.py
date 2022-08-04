@@ -3,7 +3,7 @@ from pathlib import Path
 import csv
 import api
 
-# Define the function cash_on_hand
+# Define the function cash_on_hand()
 def cash_on_hand():
     # Documentation of the function cash_on_hand()
     """
@@ -34,18 +34,18 @@ def cash_on_hand():
             cashonhand_list.append(float(datas[1]))
             # Append days into days_list
             days_list.append(datas[0])
-        # Create 'index" to represent the index position of the items in the cashonhand_list
-        # Create 'index" to represent the index position of the items in the days_list
+        # Create "index" to represent the index position of the items in the cashonhand_list
+        # Create "index" to represent the index position of the items in the days_list
         index = 1
         # Use while loop to repeat appending summary statement into "summary" for index position lesser than the number of items in cashonhand_list
         while index < len(cashonhand_list):
             # Use try to start exception handling
             try:
-                #Calculate the difference between cash on hand of the day and cash on hand of the day before it
+                # Calculate the difference between cash on hand of the day and cash on hand of the day before it
                 difference = (cashonhand_list[index]) - (cashonhand_list[index - 1]) 
             # Use except to handle TypeError
             except TypeError:
-            # Return "There is a TypeError!"
+                # Return "There is a TypeError!"
                 return "There is a TypeError!"
             # Execute the followings if there is no TypeError
             else:
@@ -57,10 +57,10 @@ def cash_on_hand():
                 index += 1
                 # Create a condition when the difference is less than or equals to 0
                 if difference <= 0:
-                    #Append summary statement into "summary" if the difference satisfy the above condition
-                    #Use abs() to returnthe absolute value of difference 
-                    #Multiply difference with currency exchange rate to convert USD to SGD
-                    #Use round(,2) to round the values to 2 decimal places
+                    # Append summary statement into "summary" if the difference satisfy the above condition
+                    # Use abs() to returnthe absolute value of difference 
+                    # Multiply difference with currency exchange rate to convert USD to SGD
+                    # Use round( ,2) to round the values to 2 decimal places
                     summary.append(f"[CASH DEFICIT] DAY: {days_list[index -1]}, AMOUNT: SGD{round(abs(difference*api.forex), 2)}")
                 # Create a condition when the difference is more than 0
                 else:
@@ -68,7 +68,7 @@ def cash_on_hand():
                     continue  
         # Create a condition when the 1st item of difference_list is more than 0
         if difference_list[0] > 0:
-            #Append summary statement into "summary" if the 1st item of difference_list satisfy the above condition
+            # Append summary statement into "summary" if the 1st item of difference_list satisfy the above condition
             summary.append("[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
         # Return "summary"
         return summary
