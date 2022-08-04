@@ -18,17 +18,28 @@ def mainSolution():
     cohindex = 0
     # Create "plindex" to represent the index position of the items in the output of the profit_loss.profit_loss()
     plindex = 0
-    # Open summary_report.txt file for appending
-    cohsummary = cash_on_hand.cash_on_hand()
-    plsummary = profit_loss.profit_loss()
+    # Open summary_report.txt file for writing
     with summary_file.open(mode = "w", encoding = "UTF-8") as file:
         file.writelines(api.api())
+    # Open summary_report.txt file for appending
     with summary_file.open(mode = "a", encoding = "UTF-8") as file:
+        # Use .writelines() to write the output of overheads.overheads() into summary_report.txt file
+        # Use \n to add the item into a new line
         file.writelines(f" \n{overheads.overheads()}")
-        while cohindex < len(cohsummary):
-            file.writelines(f" \n{cohsummary[cohindex]}")
+        # Creating a while loop to repeat appending summary statement into summary_report.txt file for cohindex lesser than the number of items in the output of cash_on_hand.cash_on_hand()
+        while cohindex < len(cash_on_hand.cash_on_hand()):
+            # Use .writeline() to write the output of cash_on_hand.cash_on_hand() into summary_report.txt file
+            # Use \n to add the items into a new line
+            file.writelines(f" \n{cash_on_hand.cash_on_hand()[cohindex]}")
+            # To increase index position by 1
             cohindex +=1
-        while plindex < len(plsummary):
-            file.writelines(f"\n{plsummary[plindex]}")
+            
+        # Creating while loop to repeat appending summary statement into summary_report.txt file fot plindex lesser than the number of  items in the output of profit_loss.profit_loss()
+        while plindex < len(profit_loss.profit_loss()):
+            # Use .writeline() to write the output of profit_loss.profit_loss() into summary_report.txt file
+            # Use \n to add the items into a new line
+            file.writelines(f"\n{profit_loss.profit_loss()[plindex]}")
+            # To increase index position by 1
             plindex += 1
+# To exceute the function
 mainSolution()
