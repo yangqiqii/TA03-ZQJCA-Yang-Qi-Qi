@@ -20,6 +20,7 @@ def mainSolution():
     plindex = 0
     # Open summary_report.txt file for writing
     with summary_file.open(mode = "w", encoding = "UTF-8") as file:
+        # Use .writelines() to write the output of api.api() into summary_report.txt file
         file.writelines(api.api())
     # Open summary_report.txt file for appending
     with summary_file.open(mode = "a", encoding = "UTF-8") as file:
@@ -32,8 +33,7 @@ def mainSolution():
             # Use \n to add the items into a new line
             file.writelines(f" \n{cash_on_hand.cash_on_hand()[cohindex]}")
             # To increase index position by 1
-            cohindex +=1
-            
+            cohindex += 1
         # Creating while loop to repeat appending summary statement into summary_report.txt file fot plindex lesser than the number of  items in the output of profit_loss.profit_loss()
         while plindex < len(profit_loss.profit_loss()):
             # Use .writeline() to write the output of profit_loss.profit_loss() into summary_report.txt file
@@ -41,5 +41,5 @@ def mainSolution():
             file.writelines(f"\n{profit_loss.profit_loss()[plindex]}")
             # To increase index position by 1
             plindex += 1
-# To exceute the function
+# Execute the function
 mainSolution()
