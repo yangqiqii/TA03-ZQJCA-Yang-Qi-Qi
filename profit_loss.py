@@ -24,12 +24,14 @@ def profit_loss():
     # Open profit-and-loss-usd.csv file for reading
     with file_path.open(mode = 'r', encoding = 'UTF-8', newline ='' ) as file:
         # Use csv.reader() to read csv file
+        # Assign csv.reader(file) to the variable "reader"
         reader = csv.reader(file)
         # Use next() to skip the header
         next(reader)
         # Access the sub-list in reader
         for datas in reader:
             # Append net profit values into netprofit_list
+            # netprofit_list.append(float(datas[4]))
             netprofit_list.append(float(datas[4]))
             # Append days into days_list
             days_list.append(datas[0])
@@ -38,15 +40,15 @@ def profit_loss():
         index = 1
         # Use while loops to repeat appending summary statement into "summary" for index position lesser than the number of items in netprofit_list
         while index < len(netprofit_list):
-            #
+            # Use try to start execption handling
             try:
                 # Calculate the difference between net profit of the day and net profit of the day before it
                 difference = (netprofit_list[index]) - (netprofit_list[index- 1]) 
-            #
+            # Use except to handle TypeError
             except TypeError:
-                #
+                # Return "There is a TypeError!"
                 return "There is a TypeError!"
-            #
+            # Execute the followings if there is no TypeError
             else:
                 # Append the differences into difference_list
                 difference_list.append(difference)
