@@ -39,14 +39,15 @@ def cash_on_hand():
         index = 1
         # Use while loop to repeat appending summary statement into "summary" for index position lesser than the number of items in cashonhand_list
         while index < len(cashonhand_list):
-            #
+            # Use try to start exception handling
             try:
                 #Calculate the difference between cash on hand of the day and cash on hand of the day before it
                 difference = (cashonhand_list[index]) - (cashonhand_list[index - 1]) 
-            #
+            # Use except to handle TypeError
             except TypeError:
+            # Return "There is a TypeError!"
                 return "There is a TypeError!"
-            # 
+            # Execute the followings if there is no TypeError
             else:
                 # Append the differences into difference_list
                 difference_list.append(difference)
